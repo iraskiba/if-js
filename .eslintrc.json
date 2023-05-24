@@ -13,7 +13,6 @@
     },
     "rules": {
         "prefer-const": "error",
-        "semi": ["error" , "always"],
-        "no-war" : "error"
+        "semi": ["error" , "always"]
     }
 }
