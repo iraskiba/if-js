@@ -1,4 +1,4 @@
- function min  (a , b) {
+ function minNum  (a , b) {
     if (a > b) {
       return b;
     } else {
@@ -14,42 +14,46 @@
   }
  }
 
-function maxx  (x , y) {
+function maxNum  (x , y) {
   return  x > y ? x : y ; }
 
-console.log(maxx (10, 4));
+console.log(maxNum (10, 4));
 console.log(max (10, 7));
-console.log(min (10, 7));
+console.log(minNum (10, 7));
 
 const length = 10;
-const ari = [];
+const array = [];
 for (let i = 0; i < length ; i++) {
 
-  const rand = Math.floor(Math.random() * 101);
-  ari.push(rand);
+  const randomArray = Math.floor(Math.random() * 101);
+  array.push(randomArray);
 }
-function rer(arr){
-  for (let i = 0; i < arr.length ; i++) {
-    if (arr[i] === 0) {
-      arr[i] = 'zero';
-      console.log(arr[i]);
-    } else if (arr[i] % 10 === 0 || arr[i] % 100 ===0 )
-    arr[i]= arr[i].toString()[0] +'zero';
+function replace(getZero){
+  for (let i = 0; i < getZero.length ; i++) {
+    if (getZero[i] === 0) {
+      getZero[i] = 'zero';
+      console.log(getZero[i]);
+    } else if (getZero[i] % 10 === 0) {
+      getZero[i] = getZero[i].toString()[0] + 'zero';
+    } else if (getZero[i] % 100 === 0) {
+      getZero[i] = getZero[i].toString()[0] + 'zerozero';
+    }
   }
-  return arr;
+
+  return getZero;
 }
 
-console.log(rer(ari));
+console.log(replace(array));
 
-function poli (yourword) {
-  let word = '';
+function polindrom (yourword) {
+  let getword = '';
   for (let i = yourword.length - 1 ; i >=0; i--){
-    word += yourword[i];
+    getword += yourword[i];
   }
-  return yourword === word;
+  return yourword === getword;
 }
 
-console.log(poli('mama'));
+console.log(polindrom('mama'));
 
 
 
