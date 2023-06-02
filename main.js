@@ -1,64 +1,60 @@
-let user = 'John Doe';
-
-console.log(user);
-
-const student = 'Irina';
-
-console.log(student);
-
-user = 'student';
-
-//student
-
-console.log(user);
-
-let test = 1;
-
-test ++;
-
-test += '1';
-//21
-
-console.log(test);
-
-test --;
-//20
-console.log(test);
-
-test =Boolean(test);
-//true
-console.log(test);
-
-const numbers = [2, 3, 5, 8];
-
-let result = 1;
-
-for (let i= 0; i < numbers.length; i++) {
-
-  result *= numbers [i];
-
-}
-console.log(result);
-
-const array = [2, 5, 8, 15, 0, 6, 20, 3];
-
-for (let i = 0; i <= array.length; i++){
-
-if (array [i] > 5 && array[i] < 10) {
-
-  console.log(array[i]);
-}
-
-}
-
-const arr = [2, 5, 8, 15, 0, 6, 20, 3];
-
-for (let i = 0; i <= arr.length; i++) {
-
-  if (arr[i] % 2 === 0) {
-
-    console.log (arr [i]);
+ function minNum  (a , b) {
+    if (a > b) {
+      return b;
+    } else {
+      return a;
+    }
   }
 
+ function max  (a , y) {
+  if (a < y) {
+    return y;
+  } else {
+    return a;
+  }
+ }
+
+function maxNum  (x , y) {
+  return  x > y ? x : y ; }
+
+console.log(maxNum (10, 4));
+console.log(max (10, 7));
+console.log(minNum (10, 7));
+
+const length = 10;
+const array = [];
+for (let i = 0; i < length ; i++) {
+
+  const randomArray = Math.floor(Math.random() * 101);
+  array.push(randomArray);
 }
+function replace(getZero){
+  for (let i = 0; i < getZero.length ; i++) {
+    if (getZero[i] === 0) {
+      getZero[i] = 'zero';
+      console.log(getZero[i]);
+    } else if (getZero[i] % 10 === 0) {
+      getZero[i] = getZero[i].toString()[0] + 'zero';
+    } else if (getZero[i] % 100 === 0) {
+      getZero[i] = getZero[i].toString()[0] + 'zerozero';
+    }
+  }
+
+  return getZero;
+}
+
+console.log(replace(array));
+
+function polindrom (yourword) {
+  let getword = '';
+  for (let i = yourword.length - 1 ; i >=0; i--){
+    getword += yourword[i];
+  }
+  return yourword === getword;
+}
+
+console.log(polindrom('mama'));
+
+
+
 
