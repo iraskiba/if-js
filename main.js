@@ -1,60 +1,34 @@
- function minNum  (a , b) {
-    if (a > b) {
-      return b;
-    } else {
-      return a;
-    }
-  }
-
- function max  (a , y) {
-  if (a < y) {
-    return y;
-  } else {
-    return a;
-  }
- }
-
-function maxNum  (x , y) {
-  return  x > y ? x : y ; }
-
-console.log(maxNum (10, 4));
-console.log(max (10, 7));
-console.log(minNum (10, 7));
-
-const length = 10;
-const array = [];
-for (let i = 0; i < length ; i++) {
-
-  const randomArray = Math.floor(Math.random() * 101);
-  array.push(randomArray);
-}
-function replace(getZero){
-  for (let i = 0; i < getZero.length ; i++) {
-    if (getZero[i] === 0) {
-      getZero[i] = 'zero';
-      console.log(getZero[i]);
-    } else if (getZero[i] % 10 === 0) {
-      getZero[i] = getZero[i].toString()[0] + 'zero';
-    } else if (getZero[i] % 100 === 0) {
-      getZero[i] = getZero[i].toString()[0] + 'zerozero';
-    }
-  }
-
-  return getZero;
+function sum(a) {
+  return function (b) {
+    return a + b;
+  };
 }
 
-console.log(replace(array));
+console.log(sum(2)(5));
 
-function polindrom (yourword) {
-  let getword = '';
-  for (let i = yourword.length - 1 ; i >=0; i--){
-    getword += yourword[i];
-  }
-  return yourword === getword;
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+function changeColor() {
+  let i = 0;
+  return function (event) {
+    const currentColor = event.target;
+    const nextColor = colors[i++] || colors[0];
+    currentColor.style.color = nextColor;
+  };
 }
 
-console.log(polindrom('mama'));
+const changeColor1 = changeColor();
+const changeColor2 = changeColor();
+const changeColor3 = changeColor();
 
-
+if (text1 && text2 && text3) {
+  text1.addEventListener('click', changeColor1);
+  text2.addEventListener('click', changeColor2);
+  text3.addEventListener('click', changeColor3);
+} else {
+  console.log('One or more elements is null');
+}
 
 
