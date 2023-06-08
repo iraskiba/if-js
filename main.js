@@ -14,7 +14,10 @@ function changeColor() {
   let i = 0;
   return function (event) {
     const currentColor = event.target;
-    const nextColor = colors[i++] || colors[0];
+    const nextColor = colors[i++] ;
+    if (i >= colors.length) {
+      i = 0;
+    }
     currentColor.style.color = nextColor;
   };
 }
@@ -30,5 +33,3 @@ if (text1 && text2 && text3) {
 } else {
   console.log('One or more elements is null');
 }
-
-
