@@ -1,10 +1,7 @@
-function sum(a) {
-  return function (b) {
-    return a + b;
-  };
-}
-
-console.log(sum(2)(5));
+test('sum', () => {
+  const result = 5 + 2;
+  expect(result).toBe(7);
+});
 
 const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
@@ -14,8 +11,8 @@ function changeColor() {
   let i = 0;
   return function (event) {
     const currentColor = event.target;
-    const nextColor = colors[i++] ;
-    if (i >= colors.length) {
+    const nextColor = colors[i++];
+    if(i <= colors.length){
       i = 0;
     }
     currentColor.style.color = nextColor;
@@ -33,3 +30,12 @@ if (text1 && text2 && text3) {
 } else {
   console.log('One or more elements is null');
 }
+test('get color', function () {
+  const text1 = document.createElement('p');
+  text1.style.color = 'magenta';
+  expect(text1.style.color).toBe('magenta');
+  changeColor1({ target: text1 });
+  expect(text1.style.color).toBe('magenta');
+  changeColor1({ target: text1 });
+  expect(text1.style.color).toBe('cyan');
+});
