@@ -4,11 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    //"test:coverage": "jest --coverage",
-    //"test": "jest",
+
     "prepare": "husky install",
     "lint": "prettier --write . && eslint main.js",
-    //"prepublish": "npm run lint && npm test",
+
     "lint": "eslint."
   },
   "author": "",

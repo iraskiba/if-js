@@ -1,13 +1,9 @@
 
-function change(String) {
-  const splitDate = String.split('-');
-  return `${splitDate[2]}.${splitDate[1]}.${splitDate[0]}`;
+function changeDate(String) {
+  let elem = String.split('-');
+  return `${elem[2]}.${elem[1]}.${elem[0]}`
 }
-
-const date = '2020-11-26';
-change(date);
-const dateChange = change(date);
-console.log(dateChange);
+console.log(changeDate('2020-11-26'));
 
 
 
@@ -64,7 +60,7 @@ let data = [
     hotel: 'Hotel Rehberge Berlin Mitte',
   },
 ];
-let str = 'marocco';
+let str = 'ber';
   console.log(find(str,data));
 
 
