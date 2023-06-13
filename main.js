@@ -1,35 +1,66 @@
-function sum(a) {
-  return function (b) {
-    return a + b;
-  };
+
+function changeDate(String) {
+  let elem = String.split('-');
+  return `${elem[2]}.${elem[1]}.${elem[0]}`
 }
+console.log(changeDate('2020-11-26'));
 
-console.log(sum(2)(5));
 
-const text1 = document.getElementById('text1');
-const text2 = document.getElementById('text2');
-const text3 = document.getElementById('text3');
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-function changeColor() {
-  let i = 0;
-  return function (event) {
-    const currentColor = event.target;
-    const nextColor = colors[i++] ;
-    if (i >= colors.length) {
-      i = 0;
+
+function find (str,data) {
+  const arrayResult = [];
+  for (let i = 0; i < data.length; i++) {
+    const el = data[i];
+    const regex = RegExp(str,'i');
+    if (el.country.match(regex) || el.city.match(regex) || el.hotel.match(regex)) {
+      arrayResult[arrayResult.length] = `${el.country}, ${el.city}, ${el.hotel}`;
     }
-    currentColor.style.color = nextColor;
-  };
 }
-
-const changeColor1 = changeColor();
-const changeColor2 = changeColor();
-const changeColor3 = changeColor();
-
-if (text1 && text2 && text3) {
-  text1.addEventListener('click', changeColor1);
-  text2.addEventListener('click', changeColor2);
-  text3.addEventListener('click', changeColor3);
-} else {
-  console.log('One or more elements is null');
+return arrayResult;
 }
+let data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
+let str = 'ber';
+  console.log(find(str,data));
+
+
