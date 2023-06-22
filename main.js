@@ -65,12 +65,8 @@ let str = 'berlin';
 
 console.log('lesson-6')
 
-  function polindrom (str){
-    debugger
-    const result = str.split('').reverse().join('');
-    return str === result;
-  }
-console.log(polindrom('шалаш'))
+  const polindrom = str => str === str.split('').reverse().join('');
+console.log(polindrom('vfvb'))
 
 const hotels = [
   {
@@ -233,16 +229,21 @@ function findElement (str) {
   const arr = hotels.filter((item) => {
     return item.name.toLowerCase() === str.toLowerCase() || item.city.toLowerCase() === str.toLowerCase()||
       item.country.toLowerCase() === str.toLowerCase();
+  }).map((item) => {
+    return  `${item.country}, ${item.city}, ${item.name}`;
   });
   return arr;
 }
-console.log(findElement('uk'));
+console.log(findElement('spain'));
 
 
+function countryName (){
+  const getObj = {};
+  hotels.forEach((el) => {
+    getObj[el.country] = getObj[el.country] || [];
+    getObj[el.country].push(el.city);
+  });
+  return getObj
+}
 
- const getObj = {};
- hotels.forEach((el) => {
-   getObj[el.country] = getObj[el.country] || [];
-   getObj[el.country].push(el.city);
-   });
-console.log(getObj);
+console.log(countryName());
