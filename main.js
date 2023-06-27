@@ -247,3 +247,57 @@ function countryName (){
 }
 
 console.log(countryName());
+
+console.log('lesson-7')
+
+
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
+const deepEqual = (objEqual1, objEqual2) => {
+  const keyObj1 = Object.keys(objEqual1);
+  const keyObj2 = Object.keys(objEqual2);
+  if (keyObj1.length !== keyObj2.length){
+    return false;
+  }
+  return keyObj1.every(key => {
+    const value1 = objEqual1[key];
+    const value2 = objEqual2[key];
+   if(typeof value1 === 'object' && typeof  value2 === 'object') {
+     return deepEqual(value1,value2);
+   }
+    return value1 === value2;
+  });
+};
+
+console.log(deepEqual(obj1, obj2));
+
+console.log(deepEqual(obj1, obj3));
+
