@@ -281,15 +281,15 @@ const obj3 = {
   },
   b: 'b',
 };
-const deepEqual = (obj1, obj2, obj3) => {
-  const keyObj1 = Object.keys(obj1);
-  const keyObj2 = Object.keys(obj2);
+const deepEqual = (objEqual1, objEqual2) => {
+  const keyObj1 = Object.keys(objEqual1);
+  const keyObj2 = Object.keys(objEqual2);
   if (keyObj1.length !== keyObj2.length){
     return false;
   }
   return keyObj1.every(key => {
-    const value1 = obj1[key];
-    const value2 = obj2[key];
+    const value1 = objEqual1[key];
+    const value2 = objEqual2[key];
    if(typeof value1 === 'object' && typeof  value2 === 'object') {
      return deepEqual(value1,value2);
    }
