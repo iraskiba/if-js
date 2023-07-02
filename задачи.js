@@ -151,3 +151,64 @@ console.log(deepEqual(obj1, obj2));
 const sort1 = Object.entries(obj1).sort((a, b) => a[0] - b[0]);
 const sort2 = Object.entries(obj2).sort((a, b) => a[0] - b[0]);
 return JSON.stringify(sort1) === JSON.stringify(sort2);
+
+const myPet = {
+  pet:'cat',
+  name:'Star',
+  owner:'Jone Doe'
+}
+//------функция конструктор
+//function Pet(pet, name, owner){
+//this.pet = pet;
+//this.name = name;
+//this.owner = owner;
+//}
+// создать метод который будет выводить имя животного
+//Pet.prototype.schowName = function (){
+//return 'Pet\'s name is ' + this.name;
+//}
+//const pet1 = new Pet('dog', 'Murka', 'Ira');
+//console.log(pet1)
+//console.log(pet1.schowName());
+
+
+//-------создание через ключевое слово класс
+class Pet{
+  constructor(pet,name,owner) {
+    this.pet = pet;
+    this.name = name;
+    this.owner = owner;
+  }
+
+//const pet1 = new Pet('dog', 'Murka', 'Ira');
+//console.log(pet1)
+  showName(){
+    return 'Pet\'s name is ' + this.name;
+  }
+  static showInfo = function (){
+    return 'This class has 3 values';
+  }
+}
+///определить является обьект экземпляром класса
+//console.log(pet1 instanceof Object);
+
+//---наследование
+class myO {
+  constructor (name,country,age)
+  {
+    this.name = name;
+    this.country = country;
+    this.age = age;
+  }
+};
+class PremimmyO extends myO{
+  constructor(name,country,age,owner,color) {
+    super(name,country,age);
+    this.owner = owner;
+    this.color = color;
+  }
+};
+const premim = new PremimmyO('Ira','Poland','29','d', 'black')
+console.log(premim);
+
+
