@@ -577,3 +577,97 @@ Students.prototype.getInfo = function (){
 const students = new Students(studentsData);
 console.log(students.getInfo());
 
+
+function urlGenerate (domain){
+  return function (url){
+    return `https://${url}.${domain}`
+  }
+}
+const comUrl = urlGenerate('com')
+const ruUrl = urlGenerate('ru')
+console.log(comUrl('google'))
+console.log(ruUrl('yandex'))
+
+function added (num){
+  return function (n) {
+    return n+num;
+  }
+}
+const num1 = added(11)
+console.log(num1(70))
+
+
+function hello (){
+  console.log('Hello', this)
+}
+const person = {
+  name: 'Ira',
+  age: 25,
+  sayHello: hello,
+  sayHelloWindow:hello.bind(document),
+  logInfo:function (job,phone){
+    console.group(`${this.name} info:`)
+    console.log(`Name is ${this.name}`);
+    console.log(`Age is ${this.age}`);
+    console.log(`Job is ${job}`);
+    console.log(`Phone is ${phone}`);
+    console.groupEnd()
+  }
+};
+person.logInfo();
+const lena = {
+  name: 'Elena',
+  age: 23
+}
+//const fnlena = person.logInfo.bind(lena,'frontend','8033655')
+//fnlena()
+//console.log(fnlena)
+//person.logInfo.call(lena,'frontend','8033655')
+person.logInfo.apply(lena,['frontend','8033655'])
+console.log(fnlena)
+
+
+function toIt (obj) {
+  return {
+    ...obj, [Symbol.iterator]() {
+      const keys = Object.keys(this)
+      const limit = keys.length
+      const $this = this
+
+      let counter = 0
+      return {
+        next() {
+          if (counter < limit) {
+            return {
+              done: false,
+              value: $this[keys[counter++]]
+            }
+          }
+          return {
+            done: true
+          }
+        }
+      }
+    }
+  }
+}
+const person = {
+  name: 'Ira',
+  age: 25,
+  city: 'Grodno',
+}
+const  car = {
+  model: 'mercedess',
+  getModel: function (){
+    return this.model;
+  }
+}
+
+for(let value of toIt(person)){
+  console.log(value)
+}
+
+for(let value of toIt(car)){
+  if (typeof value !== 'function')
+    console.log(value)
+}

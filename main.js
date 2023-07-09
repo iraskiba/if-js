@@ -1,26 +1,29 @@
 const colors = {
   data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
-  index :0,
   [Symbol.iterator]() {
     return this;
   },
-  next(){
-    if (this.index >= this.data.length) {
-    this.index = 0;
-  }
-    if (this.index === this.data.length) {
+  next() {
+    if (this.current === undefined) {
+      this.current = 0;
+    }
+    if (this.current < this.data.length) {
+      const value = this.data[this.current];
+      this.current++;
       return {
-        done: true
+        done: false,
+        value: value,
       };
     }
-    const value = this.data[this.index];
-    this.index++;
-    return {
-      done: false,
-      value: value,
-  };
-},
-};
+    if (this.current === this.data.length) {
+      this.current = 0;
+      return {
+        done: false,
+        value: this.data[this.current]
+      };
+    };
+  }
+}
   const changeStyle = (id) => (event) => {
     event.target.style.color = colors.next().value;
   };
@@ -31,3 +34,5 @@ const colors = {
   text1.addEventListener('click', changeStyle('text1'));
   text2.addEventListener('click', changeStyle('text2'));
   text3.addEventListener('click', changeStyle('text3'));
+
+
