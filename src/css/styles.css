@@ -1477,11 +1477,13 @@ position: relative;
     margin-top: 4px;
   }
 
-  .guests-item__forth {
+
+  .section-homes__items. homes-item:nth-child(4) {
     display: none;
   }
 
-  .section-homes__items {
+
+.section-homes__items {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2169,12 +2171,15 @@ position: relative;
     align-items: center;
     width: 100%;
   }
-
-  .guests-item__third {
+  .section-homes__items. homes-item:nth-child(3) {
     display: none;
   }
 
-  .guests-item__forth {
+  guests-item__third {
+    display: none;
+  }
+
+  guests-item__forth {
     display: none;
   }
 

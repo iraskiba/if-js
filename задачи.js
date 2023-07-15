@@ -708,3 +708,47 @@ const text3 = document.getElementById('text3');
 text1.addEventListener('click', changeStyle('text1'));
 text2.addEventListener('click', changeStyle('text2'));
 text3.addEventListener('click', changeStyle('text3'));
+
+u
+
+const Myarr = [1, 2, 4, 7, 6, 3];
+function sumArr(arr) {
+  let sum = 0;
+  for (let item of arr) {
+    sum += item;
+  }
+  return sum;
+}
+
+console.log(sumArr(Myarr));
+
+
+arr.forEach(key => {
+  const elem = sliceData[key];
+
+  const divElement = document.createElement('div');
+  const imagesEl = document.createElement('img');
+  imagesEl.src = elem.imageUrl;
+  divElement.appendChild(imagesEl);
+
+  const descr = document.createElement('p');
+  descr.innerHTML = `<p class="section-homes__hotel-name">${elem.name}</p> <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>`;
+  divElement.appendChild(descr);
+  divGuestsLoves.appendChild(divElement);
+});
+
+
+arr.forEach(key => {
+  const elem = sliceData[key];
+  const guestsItem = document.createElement('div');
+  const imagesEl = document.createElement('img');
+  guestsItem.appendChild(imagesEl);
+
+  guestsItem.innerHTML += `<img src="${elem.imageUrl}" alt = "hotel photo" class="section-homes__items__img"/>
+          <p class="section-homes__hotel-name">${elem.name} </p>
+          <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>`;
+  divGuestsLoves.appendChild(guestsItem);
+});
+
+
+

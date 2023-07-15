@@ -60,21 +60,17 @@ const sliceData = data.slice(0,4);
 const arr = Object.keys(sliceData).filter(function (key){
   return  sliceData[key].hasOwnProperty('imageUrl');
 });
-const container = document.getElementById('container');
+const divGuestsLoves = document.getElementById('guests-loves');
+let homesItems = '';
 
 arr.forEach(key => {
   const elem = sliceData[key];
-
-  const divElement = document.createElement('div');
-  const imagesEl = document.createElement('img');
-  imagesEl.src = elem.imageUrl;
-  divElement.appendChild(imagesEl);
-
-const descr = document.createElement('p');
-  descr.innerHTML = `<p class="section-homes__hotel-name">${elem.name}</p> <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>`;
-  divElement.appendChild(descr);
-container.appendChild(divElement);
+  homesItems += `<div>
+              <img src="${elem.imageUrl}" alt="hotel photo" class="section-homes__items__img"/>
+              <p class="section-homes__hotel-name">${elem.name}</p>
+              <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>
+            </div>`;
 });
 
-
+divGuestsLoves.innerHTML = homesItems;
 
