@@ -65,7 +65,7 @@ let homesItems = '';
 
 arr.forEach(key => {
   const elem = sliceData[key];
-  homesItems += `<div>
+  homesItems += `<div class="homes-items">
               <img src="${elem.imageUrl}" alt="hotel photo" class="section-homes__items__img"/>
               <p class="section-homes__hotel-name">${elem.name}</p>
               <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>
