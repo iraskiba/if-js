@@ -56,21 +56,18 @@ const data = [
     imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
   },
 ];
-const sliceData = data.slice(0,4);
-const arr = Object.keys(sliceData).filter(function (key){
-  return  sliceData[key].hasOwnProperty('imageUrl');
-});
+
 const divGuestsLoves = document.getElementById('guests-loves');
 let homesItems = '';
-
-arr.forEach(key => {
-  const elem = sliceData[key];
-  homesItems += `<div>
+let index = 0;
+  homesItems = '';
+  for (let i = index; i < 4 ; i++) {
+     const elem = data[i];
+  homesItems += `<div class="homes-items">
               <img src="${elem.imageUrl}" alt="hotel photo" class="section-homes__items__img"/>
               <p class="section-homes__hotel-name">${elem.name}</p>
               <p class="section-homes__hotel-location">${elem.city}, ${elem.country}</p>
             </div>`;
-});
-
+}
 divGuestsLoves.innerHTML = homesItems;
 
