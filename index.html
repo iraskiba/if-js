@@ -318,7 +318,63 @@
          <input class="form-section__date-element--date__form" type="text" id="date" value="Tue 15 Sept - Sat 19 Sept" >
        </div>
 
-      <div class="form-section__number-people"><p>2 Adults — 0 Children — 1 Room</p></div>
+
+
+
+
+
+
+
+      <div id = "input-block" class="input-block">
+        <div class="input-block input-block__adults">
+          <input class ="input" id="adult-input" placeholder="2" >
+          <label class="_label" for="adult-input">Adults —</label>
+        </div>
+
+
+        <div class="input-block input-block__children">
+          <input class="input" id="children-input" placeholder="0" >
+          <label class="_label" for="children-input">Children —</label>
+        </div>
+
+
+        <div  class="input-block input-block__rooms">
+          <input class="input" id="rooms-input" placeholder="1" >
+          <label class="_label" for="rooms-input">Room</label>
+        </div>
+
+        <div id="dropdown" class="dropdown">
+          <div>
+            <p class="name-item _item-first">Adults</p>
+            <p class="name-item _medium-item">Children</p>
+            <p class="name-item">Rooms</p>
+          </div>
+
+          <div>
+            <button class="count">–</button>
+            <button class="count _medium ">–</button>
+            <button class="count">–</button>
+          </div>
+
+          <div>
+            <p class="name-item _item-first" >2</p>
+            <p class="name-item _medium-item">0</p>
+            <p class="name-item">1</p>
+          </div>
+
+          <div>
+            <button class="count">+</button>
+            <button class="count _medium">+</button>
+            <button class="count">+</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
      <div>
       <button class="form-section__button-element">Search</button>
      </div>

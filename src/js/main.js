@@ -71,3 +71,39 @@ let index = 0;
 }
 divGuestsLoves.innerHTML = homesItems;
 
+const inputsEl= document.getElementById('input-block');
+const dropdown = document.getElementById('dropdown')
+
+
+inputsEl.addEventListener('click', ( event) =>{
+  dropdown.style.visibility = 'visible';
+event.stopPropagation()
+});
+
+const counts = {
+  adults: { count: 0 },
+  rooms: { count: 0 },
+  children: { count: 0 },
+};
+
+const elements = {
+  adults: { identifier: 'adults', label: 'Adults', value: 0, count: 0, values: { min: 1, max: 30 } },
+  rooms: { identifier: 'rooms', label: 'Rooms', value: 0, count: 0, values: { min: 1, max: 30 } },
+  children: { identifier: 'children', label: 'Children', value: 0, count: 0, values: { min: 0, max: 10 } },
+};
+
+
+ const buttons = document.querySelectorAll('.count');
+ buttons.forEach((button) =>{
+   button.addEventListener('click', (event) =>{
+     button.classList.toggle('_active');
+
+   });
+ });
+
+
+
+
+
+
+
