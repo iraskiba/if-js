@@ -327,7 +327,7 @@
 
       <div id = "input-block" class="input-block">
         <div class="input-block input-block__adults">
-          <input class ="input" id="adult-input" placeholder="2" >
+          <input class ="input" id="adult-input" placeholder="0" >
           <label class="_label" for="adult-input">Adults —</label>
         </div>
 
@@ -339,7 +339,7 @@
 
 
         <div  class="input-block input-block__rooms">
-          <input class="input" id="rooms-input" placeholder="1" >
+          <input class="input" id="rooms-input" placeholder="0" >
           <label class="_label" for="rooms-input">Room</label>
         </div>
 
@@ -351,21 +351,31 @@
           </div>
 
           <div>
-            <button class="count">–</button>
-            <button class="count _medium ">–</button>
-            <button class="count">–</button>
+            <button type="button"  class="count decrease">–</button>
+            <button type="button"  class="count _medium decrease">–</button>
+            <button type="button"  class="count decrease">–</button>
           </div>
 
           <div>
-            <p class="name-item _item-first" >2</p>
-            <p class="name-item _medium-item">0</p>
-            <p class="name-item">1</p>
+            <p class="num name-item _item-first" >0</p>
+            <p class="num name-item _medium-item">0</p>
+            <p class="num name-item">0</p>
           </div>
 
           <div>
-            <button class="count">+</button>
-            <button class="count _medium">+</button>
-            <button class="count">+</button>
+            <button type="button"  class="count increase">+</button>
+            <button type="button" class="count _medium increase child_add">+</button>
+            <button type="button" class="count increase">+</button>
+          </div>
+
+          <div class = "dropdown dropdown__children_hidden">
+            <form >
+              <label for =years class="question-child">What is the age of the child you’re travelling with?</label>
+              <select class="years-old" id = years name="years-old" size="1">
+
+
+              </select>
+            </form>
           </div>
         </div>
       </div>

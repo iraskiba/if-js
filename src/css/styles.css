@@ -441,7 +441,7 @@ a {
   visibility: hidden;
 }
 .count._active{
-  border: 1px solid #3077C6;
+  border: 2px solid #3077C6;
   color: #3077C6;
 }
 
@@ -469,6 +469,37 @@ padding: initial;
 
 ._medium-item{
   margin: 23px 0;
+}
+
+.dropdown__children_hidden{
+  width: 259px;
+  height: 98px;
+  background-color: #FFFFFF;
+  display: flex;
+  padding-top: 0;
+  position: absolute;
+  bottom: -59%;
+  right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  visibility: hidden;
+
+}
+
+.question-child{
+  color: #333;
+  font-size: 12px;
+  font-weight: 400;
+
+
+}
+
+select{
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top:37%;
+  right: 53%;
 }
 
 

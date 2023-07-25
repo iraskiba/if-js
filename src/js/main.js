@@ -71,16 +71,46 @@ let index = 0;
 }
 divGuestsLoves.innerHTML = homesItems;
 
+
+
+
+
+
+  //домашка - 11
+  //добавила появление первого выпадающего списка
+
 const inputsEl= document.getElementById('input-block');
 const dropdown = document.getElementById('dropdown')
-
 
 inputsEl.addEventListener('click', ( event) =>{
   dropdown.style.visibility = 'visible';
 event.stopPropagation()
 });
 
-const counts = {
+
+  //добавила активность кнопок +- при нажатии на них
+
+ const buttons = document.querySelectorAll('.count');
+ buttons.forEach((button) =>{
+   button.addEventListener('click', (event) =>{
+     button.classList.toggle('_active');
+
+   });
+ });
+
+ //появление дополнительного списочка с селектом "возраст детей"
+
+const childrenButton = document.querySelector('.child_add');
+const dropdownHidden = document.querySelector('.dropdown__children_hidden');
+childrenButton.addEventListener('click', (event) => {
+    dropdownHidden.style.visibility = 'visible';
+    event.stopPropagation();
+  });
+
+
+//ограничения по количеству + переключение кнопок +-
+
+const numbers = {
   adults: { count: 0 },
   rooms: { count: 0 },
   children: { count: 0 },
@@ -91,17 +121,46 @@ const elements = {
   rooms: { identifier: 'rooms', label: 'Rooms', value: 0, count: 0, values: { min: 1, max: 30 } },
   children: { identifier: 'children', label: 'Children', value: 0, count: 0, values: { min: 0, max: 10 } },
 };
+const btnDecrease = document.querySelectorAll('.decrease');
+const numEl = document.querySelectorAll('.num');
+const btnIncrease = document.querySelectorAll('.increase');
+
+btnDecrease.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    const element = elements[Object.keys(elements)[index]];
+    if (element.value > element.values.min) {
+      element.value--;
+      numEl[index].textContent = element.value;
+    }
+  });
+});
+
+btnIncrease.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    const element = elements[Object.keys(elements)[index]];
+    if (element.value < element.values.max) {
+      element.value++;
+      numEl[index].textContent = element.value;
+    }
+  });
+});
 
 
- const buttons = document.querySelectorAll('.count');
- buttons.forEach((button) =>{
-   button.addEventListener('click', (event) =>{
-     button.classList.toggle('_active');
+//добавила выбор возраста
 
-   });
- });
+const selectEl = document.querySelector('.years-old');
+  for (let i = 0; i < 18; i++) {
+    let option = document.createElement('option');
+  option.textContent = option.value = i;
+  if(i <= 1) {
+    option.innerText = `${i} year old`;
+    }else{
+    option.innerText = `${i} years old`;
+  }
 
+    selectEl.append(option);
 
+  };
 
 
 
