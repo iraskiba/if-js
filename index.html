@@ -325,23 +325,25 @@
 
 
 
-      <div id = "input-block" class="input-block">
-        <div class="input-block input-block__adults">
-          <input class ="input" id="adult-input" placeholder="0" >
-          <label class="_label" for="adult-input">Adults —</label>
+      <div id = "counter-block" class="counter-block">
+
+        <div class="counter-block counter-block__adults">
+          <span class ="span_number" id="adult-span"> 0 </span>
+          <label class="_label" for="adult-span">Adults —</label>
         </div>
 
 
-        <div class="input-block input-block__children">
-          <input class="input" id="children-input" placeholder="0" >
-          <label class="_label" for="children-input">Children —</label>
+        <div class="counter-block counter-block__children">
+          <span class ="span_number" id="children-span"> 0 </span>
+          <label class="_label" for="children-span">Children —</label>
         </div>
 
 
-        <div  class="input-block input-block__rooms">
-          <input class="input" id="rooms-input" placeholder="0" >
-          <label class="_label" for="rooms-input">Room</label>
+        <div  class="counter-block counter-block__rooms">
+          <span class ="span_number" id="rooms-span"> 0 </span>
+          <label class="_label" for="rooms-span">Room</label>
         </div>
+
 
         <div id="dropdown" class="dropdown">
           <div>
@@ -351,31 +353,31 @@
           </div>
 
           <div>
-            <button type="button"  class="count decrease">–</button>
-            <button type="button"  class="count _medium decrease">–</button>
-            <button type="button"  class="count decrease">–</button>
+            <button type="button"  class="count-button decrease-adults">–</button>
+            <button type="button"  class="count-button _medium decrease-children">–</button>
+            <button type="button"  class="count-button decrease-rooms">–</button>
           </div>
 
           <div>
-            <p class="num name-item _item-first" >0</p>
-            <p class="num name-item _medium-item">0</p>
-            <p class="num name-item">0</p>
+            <p class="num name-item _item-first value-adults" >0</p>
+            <p class="num name-item _medium-item value-children">0</p>
+            <p class="num name-item value-rooms">0</p>
           </div>
 
           <div>
-            <button type="button"  class="count increase">+</button>
-            <button type="button" class="count _medium increase child_add">+</button>
-            <button type="button" class="count increase">+</button>
+            <button type="button"  class="count-button increase-adults">+</button>
+            <button type="button" class="count-button _medium increase-children child_add">+</button>
+            <button type="button" class="count-button increase-rooms">+</button>
           </div>
+
+
+
 
           <div class = "dropdown dropdown__children_hidden">
-            <form >
-              <label for =years class="question-child">What is the age of the child you’re travelling with?</label>
-              <select class="years-old" id = years name="years-old" size="1">
+            <div id="form">
+              <h3  class="age-child">What is the age of the child you’re travelling with?</h3>
 
-
-              </select>
-            </form>
+            </div>
           </div>
         </div>
       </div>

@@ -391,15 +391,8 @@ a {
   background-color: var(--stroke-main);
 }
 
-.input{
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.17;
-  width: 15px;
-  color: #383838;
-}
+
+
 
 ._label{
   font-size: 18px;
@@ -409,19 +402,19 @@ a {
   margin-left: 3px;
 }
 
-.input-block__adults{
+.counter-block__adults{
   position: absolute;
   top: 30%;
   right: 32%;
 }
 
-.input-block__children{
+.counter-block__children{
   position: absolute;
   top: 30%;
   right:23.1%;
 }
 
-.input-block__rooms{
+.counter-block__rooms{
   position: absolute;
   top: 30%;
   right: 17.4%;
@@ -440,12 +433,12 @@ a {
   padding: 22px;
   visibility: hidden;
 }
-.count._active{
+.count-button._active{
   border: 2px solid #3077C6;
   color: #3077C6;
 }
 
-.count{
+.count-button{
 padding: initial;
   display: flex;
   justify-content: center;
@@ -486,7 +479,7 @@ padding: initial;
 
 }
 
-.question-child{
+.age-child{
   color: #333;
   font-size: 12px;
   font-weight: 400;
