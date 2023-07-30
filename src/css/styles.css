@@ -425,7 +425,6 @@ a {
   position: absolute;
   right: 15%;
   width: 259px;
-  height:158px ;
   background-color: #FFFFFF;
   border-radius: 8px;
   display: flex;
@@ -465,44 +464,34 @@ padding: initial;
 }
 
 .dropdown__children_hidden{
-  width: 259px;
-  height: 98px;
   background-color: #FFFFFF;
-  display: flex;
   padding-top: 0;
   position: absolute;
-  bottom: -59%;
+  top: 96%;
   right: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   visibility: hidden;
-
 }
 
 .age-child{
   color: #333;
   font-size: 12px;
   font-weight: 400;
-
-
+  margin-bottom: 12px;
 }
 
 select{
   width: 100px;
   height: 30px;
-  position: absolute;
   top:37%;
-  right: 53%;
+  right:53%;
 }
 
-
-
-
-
-
-
-
-
+.dropdown__added-child{
+  display: flex;
+  flex-direction: column;
+}
 
 .form-section__button-element {
   box-sizing: border-box;

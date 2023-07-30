@@ -77,16 +77,23 @@ divGuestsLoves.innerHTML = homesItems;
 
 
   //домашка - 11
-  //добавила появление первого выпадающего списка
+  //добавила появление + исчезновение первого выпадающего списка
 
 const inputsEl= document.getElementById('counter-block');
 const dropdown = document.getElementById('dropdown')
-
 inputsEl.addEventListener('click', ( event) =>{
   dropdown.style.visibility = 'visible';
 event.stopPropagation()
 });
 
+window.addEventListener('click', event =>{
+  (!dropdown.contains(event.target) ||!dropdownHidden.contains(event.target) )
+  {
+    dropdownHidden.style.visibility = 'hidden'
+    dropdown.style.visibility= 'hidden';
+
+  }
+})
 
   //добавила активность кнопок +- при нажатии на них
 
@@ -94,7 +101,6 @@ event.stopPropagation()
  buttons.forEach((button) =>{
    button.addEventListener('click', (event) =>{
      button.classList.toggle('_active');
-
    });
  });
 
@@ -107,7 +113,6 @@ childrenButton.addEventListener('click', (event) => {
     dropdownHidden.style.visibility = 'visible';
     event.stopPropagation();
   });
-
 
 //ограничения по количеству + переключение кнопок +-
 
@@ -149,8 +154,6 @@ increaseChildrenEl.addEventListener('click', function (){
   if(value2 < 10) {
     value2 += 1;
     updateChildren();
-    addSelect();
-
   }
 });
 decreaseChildrenEl.addEventListener('click', function (){
@@ -185,28 +188,39 @@ decreaseRoomsEl.addEventListener('click', function (){
 });
 
 
+//селекты
+
 const formContainer = document.getElementById('form');
-
-
 let selectCount = 0;
+function addSelect() {
+    const selectEl = document.createElement('select');
+    for (let i = 0; i <= 17; i++) {
 
-function addSelect(){
-  const selectEl = document.createElement('select');
-  for(let i = 0; i <= value2; i++){
-    const optionAge = document.createElement('option');
-    optionAge.value=i;
-    optionAge.textContent=`${i} years old`;
-    selectEl.appendChild(optionAge);
-
+      const optionAge = document.createElement('option');
+      optionAge.value = i;
+      optionAge.textContent = `${i} years old`;
+      selectEl.appendChild(optionAge);
+    }
+    formContainer.appendChild(selectEl);
   }
-  formContainer.appendChild(selectEl);
+
+
+increaseChildrenEl.addEventListener('click', function (){
+  if (value < 10){
+    value += 1;
+      addSelect();
+    }
+  });
+
+decreaseChildrenEl.addEventListener('click', function (){
+  if (value > 0) {
+    value -= 1;
+    formContainer.removeChild(formContainer.lastChild);
+    if (value === 0 ){
+      dropdownHidden.style.visibility= 'hidden';
+  }
 }
-
-
-
-
-
-
+});
 
 
 
