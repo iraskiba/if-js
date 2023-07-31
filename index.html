@@ -318,7 +318,71 @@
          <input class="form-section__date-element--date__form" type="text" id="date" value="Tue 15 Sept - Sat 19 Sept" >
        </div>
 
-      <div class="form-section__number-people"><p>2 Adults — 0 Children — 1 Room</p></div>
+
+
+
+
+
+
+
+      <div id = "counter-block" class="counter-block">
+
+        <div class="counter-block counter-block__adults">
+          <span class ="span_number" id="adult-span"> 0 </span>
+          <label class="_label" for="adult-span">Adults —</label>
+        </div>
+
+
+        <div class="counter-block counter-block__children">
+          <span class ="span_number" id="children-span"> 0 </span>
+          <label class="_label" for="children-span">Children —</label>
+        </div>
+
+
+        <div  class="counter-block counter-block__rooms">
+          <span class ="span_number" id="rooms-span"> 0 </span>
+          <label class="_label" for="rooms-span">Room</label>
+        </div>
+
+
+        <div id="dropdown" class="dropdown">
+          <div>
+            <p class="name-item _item-first">Adults</p>
+            <p class="name-item _medium-item">Children</p>
+            <p class="name-item">Rooms</p>
+          </div>
+
+          <div>
+            <button type="button"  class="count-button decrease-adults">–</button>
+            <button type="button"  class="count-button _medium decrease-children">–</button>
+            <button type="button"  class="count-button decrease-rooms">–</button>
+          </div>
+
+          <div>
+            <p class="num name-item _item-first value-adults" >0</p>
+            <p class="num name-item _medium-item value-children">0</p>
+            <p class="num name-item value-rooms">0</p>
+          </div>
+
+          <div>
+            <button type="button"  class="count-button increase-adults">+</button>
+            <button type="button" class="count-button _medium increase-children child_add">+</button>
+            <button type="button" class="count-button increase-rooms">+</button>
+          </div>
+
+          <div class = "dropdown dropdown__children_hidden">
+            <div class = "dropdown__added-child" id="form">
+              <h3  class="age-child">What is the age of the child you’re travelling with?</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
      <div>
       <button class="form-section__button-element">Search</button>
      </div>
