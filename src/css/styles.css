@@ -391,9 +391,6 @@ a {
   background-color: var(--stroke-main);
 }
 
-
-
-
 ._label{
   font-size: 18px;
   font-weight: 400;
@@ -599,7 +596,6 @@ select{
   max-height: 828px;
   padding: 120px 104px 0;
   position: relative;
-
 }
 
 .section-homes__bg {
@@ -651,8 +647,9 @@ top: 51%;
 }
 
 .section-homes__items__img {
-  max-width: 100%;
-  height: auto;
+  max-width: 296px;
+width: 100%;
+  aspect-ratio: 1/1;
 }
 
 .section-homes__hotel-name {
