@@ -1,3 +1,47 @@
+//домашка 13
+const buttonSearch = document.getElementById('button-search') ;
+const availableSection= document.querySelector('.available-hotels');
+const availableHotelItems = document.getElementById('available-hotels_items')
+
+buttonSearch.addEventListener('click', async function (event) {
+  event.preventDefault();
+  const inputSity = document.getElementById('city').value.toUpperCase();
+  let url = `https://if-student-api.onrender.com/api/hotels?search=${inputSity}`;
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data)=>{
+        let availableItems = '';
+        let index = 0;
+        availableItems = '';
+        for (let i = index; i < 4 ; i++) {
+          const elem = data[i];
+          if (elem && elem.imageUrl) {
+            availableItems += `<div class="homes-items">
+              <img src="${elem.imageUrl}" alt="hotel photo" class="available-hotels__img"/>
+              <p class="available-hotels__hotel-name">${elem.name}</p>
+              <p class="available-hotels__location ">${elem.city}, ${elem.country}</p>
+            </div>`;
+          }
+        }
+        availableHotelItems.innerHTML = availableItems;
+        availableSection.style.display = 'block';
+
+    })
+    .catch((err) => {
+      console.log('Error', err.message)
+    });
+});
+window.addEventListener('click', event =>{
+ if (!availableSection.contains(event.target )){
+   availableSection.style.display= 'none';
+ }
+});
+
+
+
+
 //домашка 12
 function getData() {
   return fetch('https://if-student-api.onrender.com/api/hotels/popular')

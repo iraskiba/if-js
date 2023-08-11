@@ -429,6 +429,7 @@ a {
   padding: 22px;
   visibility: hidden;
 }
+
 .count-button._active{
   border: 2px solid #3077C6;
   color: #3077C6;
@@ -528,6 +529,53 @@ select{
   height: 39px;
 }
 
+
+/* available-hotels */
+
+.available-hotels{
+ display: none;
+  background-size: cover;
+  background-position: center;
+  max-height: 828px;
+  padding: 120px 104px 100px;
+  background-color: var(--bg-color-main);
+}
+
+#available-hotels_items{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.available-hotels__title {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--text-color-main);
+  text-align: center;
+  margin-bottom: 106px;
+}
+
+.available-hotels__img {
+  max-width: 296px;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.available-hotels__hotel-name {
+  color: var(--accent-blue);
+  margin-top: 24px;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.16;
+}
+
+.available-hotels__location {
+  color: var(--secondary-text);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.16;
+  margin-top: 24px;
+}
 /* section-offer*/
 
 .section-offer {
@@ -539,7 +587,6 @@ select{
 .section-offer__title {
   font-weight: 500;
   font-size: 40px;
-  width: 306px;
   padding: 0 16px;
   box-sizing: content-box;
   color: var(--text-color-main);
@@ -563,7 +610,6 @@ select{
 .section-offer__list {
   box-sizing: border-box;
   display: flex;
-  padding: 8px 104px;
   flex-wrap: wrap;
 }
 
