@@ -44,13 +44,23 @@ window.addEventListener('click', event =>{
 
 //домашка 12
 function getData() {
-  return fetch('https://if-student-api.onrender.com/api/hotels/popular')
-    .then((response) => {
-      return response.json();
-    })
-    .catch((err) => {
-      console.log('Error', err.message)
-    });
+  const saveData = sessionStorage.getItem('guestsLoves');
+  if (saveData) {
+    return Promise.resolve(JSON.stringify(saveData));
+
+  } else {
+    return fetch('https://if-student-api.onrender.com/api/hotels/popular')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        sessionStorage.setItem('guestsLoves', JSON.stringify(data));
+        return data
+      })
+      .catch((err) => {
+        console.log('Error', err.message)
+      });
+  }
 }
 getData().then((data)=>{
   const divGuestsLoves = document.getElementById('guests-loves');
