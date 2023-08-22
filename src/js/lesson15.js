@@ -1,5 +1,5 @@
 const formEl = document.getElementById('form');
-const lesson15 = document.getElementById('input');
+const inputFile = document.getElementById('input');
 formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
 
@@ -20,3 +20,20 @@ formEl.addEventListener('submit', async (event) => {
         .catch(error => console.log(error.message));
 
     });
+
+inputFile.addEventListener('change',(event) => {
+  const files = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    const  getUrl = event.target.result;
+    const imgElement = document.createElement('img');
+    imgElement.src = getUrl;
+    document.body.appendChild(imgElement);
+    console.log(getUrl);
+  };
+  reader.readAsDataURL(files);
+
+});
+
+
+
