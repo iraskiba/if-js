@@ -6,7 +6,10 @@ const availableHotelItems = document.getElementById('available-hotels_items')
 buttonSearch.addEventListener('click', async function (event) {
   event.preventDefault();
   const inputSity = document.getElementById('city').value.toUpperCase();
-  let url = `https://if-student-api.onrender.com/api/hotels?search=${inputSity}`;
+  let url = new URL('https://if-student-api.onrender.com/api/hotels');
+  //const param = new URLSearchParams();
+  param.set('search', inputSity)
+  url.search = param.toString();
   fetch(url)
     .then((response) => {
       return response.json();
@@ -42,7 +45,7 @@ window.addEventListener('click', event =>{
 
 
 
-//домашка 12
+//домашка 12,16
 function getData() {
   const saveData = sessionStorage.getItem('guestsLoves');
   if (saveData) {
@@ -66,7 +69,19 @@ getData().then((data)=>{
   const divGuestsLoves = document.getElementById('guests-loves');
   let homesItems = '';
   let index = 0;
-  homesItems = '';
+  //console.log(data)
+
+  for(let i = 0;i < data.length - 1; i++){
+    for(let j = 0; j < data.length - i - 1; j++){
+      if(data [j].name  > data[j + 1].name){
+        const temp = data[j];
+        data[j] = data[j+1];
+        data[j+1] = temp;
+      }
+    }
+  }
+
+ homesItems = '';
   for (let i = index; i < 4 ; i++) {
     const elem = data[i];
     homesItems += `<div class="homes-items">
@@ -76,6 +91,7 @@ getData().then((data)=>{
             </div>`;
   }
   divGuestsLoves.innerHTML = homesItems;
+
 });
 
 
@@ -117,7 +133,11 @@ childrenButton.addEventListener('click', (event) => {
     event.stopPropagation();
   });
 
+
+
 //ограничения по количеству + переключение кнопок +-
+const url = new URL( 'https://if-student-api.onrender.com/api/hotels');
+const param = new URLSearchParams(url.search);
 
 const increaseAdultsEl = document.querySelector('.increase-adults');
 const decreaseAdultsEl = document.querySelector('.decrease-adults');
@@ -133,12 +153,20 @@ increaseAdultsEl.addEventListener('click', function (){
   if(value < 30) {
     value += 1;
     updateAdults();
+    param.set('adults', value.toString());
+    url.search = param.toString();
+
+
   }
 });
  decreaseAdultsEl.addEventListener('click', function (){
    if(value > 1) {
      value -= 1;
      updateAdults();
+     param.set('adults', value.toString());
+     url.search = param.toString();
+
+
    }
  });
 
@@ -157,12 +185,18 @@ increaseChildrenEl.addEventListener('click', function (){
   if(value2 < 10) {
     value2 += 1;
     updateChildren();
+    param.set('children', value2.toString());
+    url.search = param.toString();
+
   }
 });
 decreaseChildrenEl.addEventListener('click', function (){
   if(value2 > 0) {
     value2 -= 1;
     updateChildren();
+    param.set('children', value2.toString());
+    url.search = param.toString();
+
   }
 });
 
@@ -181,14 +215,42 @@ increaseRoomsEl.addEventListener('click', function (){
   if(value3 < 30) {
     value3 += 1;
     updateRooms();
+    param.set('rooms', value3.toString());
+    url.search = param.toString();
+
   }
 });
 decreaseRoomsEl.addEventListener('click', function (){
   if(value3 > 1) {
     value3 -= 1;
     updateRooms();
+    param.set('rooms', value3.toString());
+    url.search = param.toString();
+
   }
 });
+buttonSearch.addEventListener('click', function() {
+  const fullUrl = getAll();
+  console.log(fullUrl);
+});
+
+function getAll() {
+  url.search = param.toString();
+  return url.toString();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //селекты
@@ -224,7 +286,6 @@ decreaseChildrenEl.addEventListener('click', function (){
   }
 }
 });
-
 
 
 
