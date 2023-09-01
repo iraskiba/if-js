@@ -544,6 +544,7 @@ select{
 #available-hotels_items{
   display: flex;
   justify-content: space-evenly;
+  gap: 8px;
 }
 
 .available-hotels__title {

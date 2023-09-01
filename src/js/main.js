@@ -46,13 +46,13 @@ window.addEventListener('click', event =>{
 
 
 //домашка 12,16
-function getData() {
+async function getData() {
   const saveData = sessionStorage.getItem('guestsLoves');
   if (saveData) {
     return Promise.resolve(JSON.stringify(saveData));
 
   } else {
-    return fetch('https://if-student-api.onrender.com/api/hotels/popular')
+    const response = await fetch('https://if-student-api.onrender.com/api/hotels/popular')
       .then((response) => {
         return response.json();
       })
@@ -63,6 +63,7 @@ function getData() {
       .catch((err) => {
         console.log('Error', err.message)
       });
+    return response
   }
 }
 getData().then((data)=>{
