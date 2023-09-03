@@ -1,23 +1,22 @@
-//домашка 13
+//homeWork 13
 const buttonSearch = document.getElementById('button-search') ;
 const availableSection= document.querySelector('.available-hotels');
 const availableHotelItems = document.getElementById('available-hotels_items')
 
 buttonSearch.addEventListener('click', async function (event) {
   event.preventDefault();
-  const inputSity = document.getElementById('city').value.toUpperCase();
-  let url = new URL('https://if-student-api.onrender.com/api/hotels');
-  //const param = new URLSearchParams();
-  param.set('search', inputSity)
-  url.search = param.toString();
-  fetch(url)
+  const inputCity = document.getElementById('city').value.toLowerCase();
+  const hotelsUrlString = 'https://if-student-api.onrender.com/api/hotels';
+  let hotelsUrl = new URL(hotelsUrlString);
+  param.set('search', inputCity)
+  hotelsUrl.search = param.toString();
+  fetch(hotelsUrl)
     .then((response) => {
       return response.json();
     })
     .then((data)=>{
         let availableItems = '';
         let index = 0;
-        availableItems = '';
         for (let i = index; i < 4 ; i++) {
           const elem = data[i];
           if (elem && elem.imageUrl) {
@@ -30,7 +29,6 @@ buttonSearch.addEventListener('click', async function (event) {
         }
         availableHotelItems.innerHTML = availableItems;
         availableSection.style.display = 'block';
-
     })
     .catch((err) => {
       console.log('Error', err.message)
@@ -41,16 +39,11 @@ window.addEventListener('click', event =>{
    availableSection.style.display= 'none';
  }
 });
-
-
-
-
-//домашка 12,16
+//homeWork 12,16
 async function getData() {
   const saveData = sessionStorage.getItem('guestsLoves');
   if (saveData) {
     return Promise.resolve(JSON.stringify(saveData));
-
   } else {
     const response = await fetch('https://if-student-api.onrender.com/api/hotels/popular')
       .then((response) => {
@@ -70,8 +63,6 @@ getData().then((data)=>{
   const divGuestsLoves = document.getElementById('guests-loves');
   let homesItems = '';
   let index = 0;
-  //console.log(data)
-
   for(let i = 0;i < data.length - 1; i++){
     for(let j = 0; j < data.length - i - 1; j++){
       if(data [j].name  > data[j + 1].name){
@@ -81,7 +72,6 @@ getData().then((data)=>{
       }
     }
   }
-
  homesItems = '';
   for (let i = index; i < 4 ; i++) {
     const elem = data[i];
@@ -92,13 +82,9 @@ getData().then((data)=>{
             </div>`;
   }
   divGuestsLoves.innerHTML = homesItems;
-
 });
-
-
-  //домашка - 11
-  //добавила появление + исчезновение первого выпадающего списка
-
+  //homeWork - 11
+// added appearance + disappearance of the first dropdown list
 const inputsEl= document.getElementById('counter-block');
 const dropdown = document.getElementById('dropdown')
 inputsEl.addEventListener('click', ( event) =>{
@@ -111,40 +97,29 @@ window.addEventListener('click', event =>{
   {
     dropdownHidden.style.visibility = 'hidden'
     dropdown.style.visibility= 'hidden';
-
   }
 })
-
-  //добавила активность кнопок +- при нажатии на них
-
+  //added the activity of the buttons +-
  const buttons = document.querySelectorAll('.count-button');
  buttons.forEach((button) =>{
    button.addEventListener('click', (event) =>{
      button.classList.toggle('_active');
    });
  });
-
-
- //появление дополнительного списочка с селектом "возраст детей"
-
+ //added a list with a choice of age of children
 const childrenButton = document.querySelector('.child_add');
 const dropdownHidden = document.querySelector('.dropdown__children_hidden');
 childrenButton.addEventListener('click', (event) => {
     dropdownHidden.style.visibility = 'visible';
     event.stopPropagation();
   });
-
-
-
-//ограничения по количеству + переключение кнопок +-
+//quantity limits + switching buttons +-
 const url = new URL( 'https://if-student-api.onrender.com/api/hotels');
 const param = new URLSearchParams(url.search);
-
 const increaseAdultsEl = document.querySelector('.increase-adults');
 const decreaseAdultsEl = document.querySelector('.decrease-adults');
 const valueAdults = document.querySelector('.value-adults');
 const spanAdults = document.getElementById('adult-span');
-
 let value = 0;
 function updateAdults(){
   valueAdults.textContent = value;
@@ -156,8 +131,6 @@ increaseAdultsEl.addEventListener('click', function (){
     updateAdults();
     param.set('adults', value.toString());
     url.search = param.toString();
-
-
   }
 });
  decreaseAdultsEl.addEventListener('click', function (){
@@ -166,17 +139,12 @@ increaseAdultsEl.addEventListener('click', function (){
      updateAdults();
      param.set('adults', value.toString());
      url.search = param.toString();
-
-
    }
  });
-
-
 const increaseChildrenEl = document.querySelector('.increase-children');
 const decreaseChildrenEl = document.querySelector('.decrease-children');
 const valueChildren = document.querySelector('.value-children');
 const spanChildren = document.getElementById('children-span');
-
 let value2 = 0;
 function updateChildren(){
   valueChildren.textContent = value2;
@@ -188,7 +156,6 @@ increaseChildrenEl.addEventListener('click', function (){
     updateChildren();
     param.set('children', value2.toString());
     url.search = param.toString();
-
   }
 });
 decreaseChildrenEl.addEventListener('click', function (){
@@ -197,16 +164,12 @@ decreaseChildrenEl.addEventListener('click', function (){
     updateChildren();
     param.set('children', value2.toString());
     url.search = param.toString();
-
   }
 });
-
-
 const increaseRoomsEl = document.querySelector('.increase-rooms');
 const decreaseRoomsEl = document.querySelector('.decrease-rooms');
 const valueRooms = document.querySelector('.value-rooms');
 const spanRooms = document.getElementById('rooms-span');
-
 let value3 = 0;
 function updateRooms(){
   valueRooms.textContent = value3;
@@ -218,7 +181,6 @@ increaseRoomsEl.addEventListener('click', function (){
     updateRooms();
     param.set('rooms', value3.toString());
     url.search = param.toString();
-
   }
 });
 decreaseRoomsEl.addEventListener('click', function (){
@@ -227,41 +189,22 @@ decreaseRoomsEl.addEventListener('click', function (){
     updateRooms();
     param.set('rooms', value3.toString());
     url.search = param.toString();
-
   }
 });
 buttonSearch.addEventListener('click', function() {
   const fullUrl = getAll();
   console.log(fullUrl);
 });
-
 function getAll() {
   url.search = param.toString();
   return url.toString();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//селекты
-
+//selects
 const formContainer = document.getElementById('form');
 let selectCount = 0;
 function addSelect() {
     const selectEl = document.createElement('select');
     for (let i = 0; i <= 17; i++) {
-
       const optionAge = document.createElement('option');
       optionAge.value = i;
       optionAge.textContent = `${i} years old`;
@@ -269,15 +212,12 @@ function addSelect() {
     }
     formContainer.appendChild(selectEl);
   }
-
-
 increaseChildrenEl.addEventListener('click', function (){
   if (value < 10){
     value += 1;
       addSelect();
     }
   });
-
 decreaseChildrenEl.addEventListener('click', function (){
   if (value > 0) {
     value -= 1;
@@ -287,6 +227,3 @@ decreaseChildrenEl.addEventListener('click', function (){
   }
 }
 });
-
-
-
