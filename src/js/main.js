@@ -1,4 +1,6 @@
 //homeWork 13
+const hotelsUrlString = 'https://if-student-api.onrender.com/api/hotels';
+const populatHotels = 'https://if-student-api.onrender.com/api/hotels/popular';
 const buttonSearch = document.getElementById('button-search') ;
 const availableSection= document.querySelector('.available-hotels');
 const availableHotelItems = document.getElementById('available-hotels_items')
@@ -6,7 +8,6 @@ const availableHotelItems = document.getElementById('available-hotels_items')
 buttonSearch.addEventListener('click', async function (event) {
   event.preventDefault();
   const inputCity = document.getElementById('city').value.toLowerCase();
-  const hotelsUrlString = 'https://if-student-api.onrender.com/api/hotels';
   let hotelsUrl = new URL(hotelsUrlString);
   param.set('search', inputCity)
   hotelsUrl.search = param.toString();
@@ -45,7 +46,7 @@ async function getData() {
   if (saveData) {
     return Promise.resolve(JSON.stringify(saveData));
   } else {
-    const response = await fetch('https://if-student-api.onrender.com/api/hotels/popular')
+    const response = await fetch(populatHotels)
       .then((response) => {
         return response.json();
       })
@@ -59,20 +60,13 @@ async function getData() {
     return response
   }
 }
+import {sortData} from './sortFunction.js';
+
 getData().then((data)=>{
   const divGuestsLoves = document.getElementById('guests-loves');
   let homesItems = '';
   let index = 0;
-  for(let i = 0;i < data.length - 1; i++){
-    for(let j = 0; j < data.length - i - 1; j++){
-      if(data [j].name  > data[j + 1].name){
-        const temp = data[j];
-        data[j] = data[j+1];
-        data[j+1] = temp;
-      }
-    }
-  }
- homesItems = '';
+  sortData(data);
   for (let i = index; i < 4 ; i++) {
     const elem = data[i];
     homesItems += `<div class="homes-items">
@@ -114,7 +108,7 @@ childrenButton.addEventListener('click', (event) => {
     event.stopPropagation();
   });
 //quantity limits + switching buttons +-
-const url = new URL( 'https://if-student-api.onrender.com/api/hotels');
+const url = new URL(hotelsUrlString);
 const param = new URLSearchParams(url.search);
 const increaseAdultsEl = document.querySelector('.increase-adults');
 const decreaseAdultsEl = document.querySelector('.decrease-adults');
