@@ -44,7 +44,7 @@ window.addEventListener('click', event =>{
 async function getData() {
   const saveData = sessionStorage.getItem('guestsLoves');
   if (saveData) {
-    return Promise.resolve(JSON.stringify(saveData));
+    return JSON.parse(saveData);
   } else {
     const response = await fetch(populatHotels)
       .then((response) => {
@@ -195,7 +195,8 @@ function getAll() {
 }
 //selects
 const formContainer = document.getElementById('form');
-let selectCount = 0;
+//let values = 0;
+
 function addSelect() {
     const selectEl = document.createElement('select');
     for (let i = 0; i <= 17; i++) {
@@ -205,11 +206,14 @@ function addSelect() {
       selectEl.appendChild(optionAge);
     }
     formContainer.appendChild(selectEl);
+  value += 1;
+  updateValues();
   }
 increaseChildrenEl.addEventListener('click', function (){
   if (value < 10){
     value += 1;
       addSelect();
+    updateValues();
     }
   });
 decreaseChildrenEl.addEventListener('click', function (){
@@ -219,5 +223,26 @@ decreaseChildrenEl.addEventListener('click', function (){
     if (value === 0 ){
       dropdownHidden.style.visibility= 'hidden';
   }
+    updateValues();
 }
 });
+function updateValues() {
+  const selectvalue = document.querySelectorAll('select')
+  const valueAge = [];
+  for (let i = 0; i < selectvalue.length; i++) {
+    const selects = selectvalue[i];
+    const age = selects.value;
+    valueAge.push(age)
+  }
+
+  if (valueAge.length > 0) {
+    param.set('ages', valueAge.join(' '));
+  } else {
+    param.delete('ages');
+  }
+
+  url.search = param.toString();
+
+}
+  updateValues();
+
