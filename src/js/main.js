@@ -95,12 +95,14 @@ window.addEventListener('click', event =>{
 })
   //added the activity of the buttons +-
  const buttons = document.querySelectorAll('.count-button');
- buttons.forEach((button) =>{
-   button.addEventListener('click', (event) =>{
-     button.classList.toggle('_active');
+
+ buttons.forEach((button) => {
+   button.addEventListener('click', (event) => {
+     button.classList.add('_active');
    });
  });
- //added a list with a choice of age of children
+
+//added a list with a choice of age of children
 const childrenButton = document.querySelector('.child_add');
 const dropdownHidden = document.querySelector('.dropdown__children_hidden');
 childrenButton.addEventListener('click', (event) => {
@@ -118,7 +120,13 @@ let value = 0;
 function updateAdults(){
   valueAdults.textContent = value;
   spanAdults.textContent = value;
+  if (value === 1) {
+    decreaseAdultsEl.classList.remove('_active');
+  } else {
+    increaseAdultsEl.classList.add('_active');
+  }
 }
+
 increaseAdultsEl.addEventListener('click', function (){
   if(value < 30) {
     value += 1;
@@ -135,6 +143,7 @@ increaseAdultsEl.addEventListener('click', function (){
      url.search = param.toString();
    }
  });
+
 const increaseChildrenEl = document.querySelector('.increase-children');
 const decreaseChildrenEl = document.querySelector('.decrease-children');
 const valueChildren = document.querySelector('.value-children');
@@ -143,6 +152,11 @@ let value2 = 0;
 function updateChildren(){
   valueChildren.textContent = value2;
   spanChildren.textContent = value2;
+  if (value2 === 0) {
+    decreaseChildrenEl.classList.remove('_active');
+  } else {
+    increaseChildrenEl.classList.add('_active');
+  }
 }
 increaseChildrenEl.addEventListener('click', function (){
   if(value2 < 10) {
@@ -168,6 +182,11 @@ let value3 = 0;
 function updateRooms(){
   valueRooms.textContent = value3;
   spanRooms.textContent = value3;
+  if (value3 === 1) {
+    decreaseRoomsEl.classList.remove('_active');
+  } else {
+    increaseRoomsEl.classList.add('_active');
+  }
 }
 increaseRoomsEl.addEventListener('click', function (){
   if(value3 < 30) {
@@ -185,18 +204,9 @@ decreaseRoomsEl.addEventListener('click', function (){
     url.search = param.toString();
   }
 });
-buttonSearch.addEventListener('click', function() {
-  const fullUrl = getAll();
-  console.log(fullUrl);
-});
-function getAll() {
-  url.search = param.toString();
-  return url.toString();
-}
 //selects
 const formContainer = document.getElementById('form');
-//let values = 0;
-
+let selectcount = 0;
 function addSelect() {
     const selectEl = document.createElement('select');
     for (let i = 0; i <= 17; i++) {
@@ -206,9 +216,9 @@ function addSelect() {
       selectEl.appendChild(optionAge);
     }
     formContainer.appendChild(selectEl);
-  value += 1;
   updateValues();
   }
+
 increaseChildrenEl.addEventListener('click', function (){
   if (value < 10){
     value += 1;
@@ -234,15 +244,20 @@ function updateValues() {
     const age = selects.value;
     valueAge.push(age)
   }
-
   if (valueAge.length > 0) {
     param.set('ages', valueAge.join(' '));
   } else {
     param.delete('ages');
   }
-
-  url.search = param.toString();
-
 }
-  updateValues();
+buttonSearch.addEventListener('click', function() {
+  updateValues()
+  url.search = param.toString();
+  const fullUrl = getAll();
+  console.log(fullUrl);
+});
+function getAll() {
+  url.search = param.toString();
+  return url.toString();
+}
 
