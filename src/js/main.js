@@ -16,7 +16,7 @@ buttonSearch.addEventListener('click', async function (event) {
       return response.json();
     })
     .then((data)=>{
-        let availableItems = '';
+      let availableItems = '';
         let index = 0;
         for (let i = index; i < 4 ; i++) {
           const elem = data[i];
@@ -245,7 +245,7 @@ function updateValues() {
     valueAge.push(age)
   }
   if (valueAge.length > 0) {
-    param.set('ages', valueAge.join(' '));
+    param.set('ages', valueAge.join(','));
   } else {
     param.delete('ages');
   }
@@ -260,4 +260,3 @@ function getAll() {
   url.search = param.toString();
   return url.toString();
 }
-
