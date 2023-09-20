@@ -470,6 +470,8 @@ padding: initial;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   visibility: hidden;
+  z-index: 1;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.63);
 }
 
 .age-child{
